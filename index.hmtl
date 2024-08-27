@@ -4,13 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tobi´s Portfolio</title>
+    <style>
+        img {
+            width: 40px; /* Größe des Icons anpassen */
+            height: 40px; /* Größe des Icons anpassen */
+            margin: 10px;
+            vertical-align: middle;
+        }
+        .button-container {
+            text-align: center;
+            margin-top: 10px;
+        }
+    </style>
 </head>
-<body background="https://img.freepik.com/fotos-kostenlos/schoener-himmel-voller-sterne-ueber-trona-ca_181624-31703.jpg">
+<body background="https://img.reintech.io/variants/o2douig2cv91edd7suk5nqheflzd/e7b4ce09c703210ab8f75b017c7eaf0951c5a95b737ee8120602845c1c1d944b" id="encrypted">
  <h1 style="text-align:center;color: whitesmoke">Willkommen! Witamy!</h1>
  <h2 style="text-align:center;color: aqua;">Zu Tobi´s Web-Portfolio</h2>  
-
-<img src="./stalin-wunkt.jpeg" alt="Stalin"> <h3 style="color: hsl(197, 100%, 75%)"></h3>
 <hr>
+
+ <h3 style="text-align:center;color: hsl(197, 100%, 75%)">Kurze Information</h3>
+
 <h6 style="color: white">Zurzeit noch in der Ausbildung zum Fachinformatiker für Anwendungsetwicklungen!</h6>
 <h6 style="color: white">Erfahrungen mit Java und Python(oop), DjangoDB, MariaDB und SQL</h6>
 <h6 style="color: white">Autodidaktische fortbildung zu den Themen Cybersecurity, Kryptographie und artifical intelligence </h6>
@@ -24,26 +37,66 @@
 </head>
 <body>
     <div class="button-container">
-        <a href="https://github.com/tibo47-161" class="button github" target="_blank">GitHub</a>
-        <a href="https://www.instagram.com/Tibo47_" class="button instagram" target="_blank">Instagram</a>
-        <a href="https://wa.me/+4917646780038" class="button whatsapp" target="_blank">WhatsApp</a>
+        <a href="https://github.com/tibo47-161" target="_blank">
+            <img src="./github icon.png" alt="GitHub Icon">
+        </a>
+        <a href="https://www.instagram.com/Tibo47_" target="_blank">
+            <img src="instagram-apps-icon-free-png.webp" alt="Instagram Icon">
+        </a>
+        <a href="https://wa.me/+4917646780038" target="_blank">
+            <img src="whatsapp-2935415_640.webp" alt="WhatsApp Icon">
+        </a>
     </div>
 <hr>
+<h3 style="text-align:center;color:aqua">Ausbildung</h3>
+<p style="color: white">
+    08/2023 – laufend (vorauss. Ende 01/2026): GFN Hamburg
+    Umschulung zum Fachinformatiker für Anwendungsentwicklung</p>
+   <p style="color: white"> 08/2020 – 02/2022: Berufliche Schule für Chemie, Pharmazie, Biologie und Agrartechnick Bs09, Hamburg
+    Biologisch-techn. Assistent</p>
+    <p style="color:aliceblue">08/2016 – 02/2017: Stadtteil-Schule Lurup, Hamburg
+    Gymnasiale Oberstufe </p>
+    <p style="color: aliceblue;">08/2015 – 11/2015: Stadtteil-Schule Barmbek, Hamburg
+    Gymnasiale Oberstufe</p>
+    <p style="color:aliceblue"> 08/2013 – 02/2015: Vattenfall Europe GmbH, Hamburg
+    Ausbildung zum Elektroniker für Automatisierungstechnik</p>
+    <p style="color:aliceblue"> 08/2006 – 07/2013: Integrierte Haupt- und Realschule Vossbarg, Hamburg
+    Erweiterte Mittlere Reife, Gesamtnote 2,25
+    </p>
+    <hr>
+<p>
+    <h3 style=";text-align:center;color:aqua">Berufserfahrung</h3>
+    <p style="color: aliceblue;">03/2019 – 07/2019: P&P Personal Service GmbH, Hamburg
+        Helfer im Bau</p>
+    <p style="color: aliceblue;">07/2019 – 11/2019: Domizil am Hirschpark e.V., Hamburg
+        Helfer in der Pflege</p>
+    <p style="color: aliceblue;">02/2017 – 06/2017: The Westin Elbphilharmonie, Hamburg
+        Helfer in der Küche</p>
+    
+</p>
+<hr>
+<h3 style="text-align: center;color: aqua;">Praktika</h3>
+<p style="color: aliceblue;">09/2012: Hydro Aluminium Rolled Products GmbH, Hamburg
+    Schülerpraktikum: Elektroniker für Automatisierungstechnik</p>
+<p style="color: aliceblue;">09/2011: Euryza GmbH, Hamburg
+    Schülerpraktikum: Fachkraft für Lebensmitteltechnik</p>
+<p style="color: aliceblue;">09/2011: Euryza GmbH, Hamburg
+    Schülerpraktikum: Fachkraft für Lebensmitteltechnik</p>
+<hr>
 <h3 style="text-align:center; color:aqua">Technische Fertigkeiten</h3>
-<h6 style="color:aqua">-DATENBANKENTWICKLUNG -UND -MANAGEMENT (MARIADB) <p></p>
-    -OOP IN PYTHON (INKL. TKINTER FÜR GUI-ENTWICKLUNG) <p></p>
-    -GRUNDKENNTNISSE IN DJANGO <p></p>
-    -FEHLERBEHEBUNG UND DEBUGGING VON HARDWARE U. SOFTWARE</h6>
+<p style="color: aliceblue;">-DATENBANKENTWICKLUNG -UND -MANAGEMENT (MARIADB) </p>
+<p style="color: aliceblue;">-OOP IN PYTHON (INKL. TKINTER FÜR GUI-ENTWICKLUNG) 
+<p style="color: aliceblue;">-GRUNDKENNTNISSE IN DJANGO</p>
+<p style="color: aliceblue;">-FEHLERBEHEBUNG UND DEBUGGING VON HARDWARE U. SOFTWARE</p>
 </body>
 <style>
-    img{
-        float:left;
-        padding: 10px;
-    }
+    
     h6{
         font-size:15px;
     }
-
+#encrypted{
+    background-size: cover;
+}
 
 </style>
 </html>
