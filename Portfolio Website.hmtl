@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tobi´s Portfolio</title>
+</head>
+<body background="https://img.freepik.com/fotos-kostenlos/schoener-himmel-voller-sterne-ueber-trona-ca_181624-31703.jpg">
+ <h1 style="text-align:center;color: whitesmoke">Willkommen! Witamy!</h1>
+ <h2 style="text-align:center;color: aqua;">Zu Tobi´s Web-Portfolio</h2>  
+
+<img src="./stalin-wunkt.jpeg" alt="Stalin"> <h3 style="color: hsl(197, 100%, 75%)"></h3>
+<hr>
+<h6 style="color: white">Zurzeit noch in der Ausbildung zum Fachinformatiker für Anwendungsetwicklungen!</h6>
+<h6 style="color: white">Erfahrungen mit Java und Python(oop), DjangoDB, MariaDB und SQL</h6>
+<h6 style="color: white">Autodidaktische fortbildung zu den Themen Cybersecurity, Kryptographie und artifical intelligence </h6>
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Social Media Buttons</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="button-container">
+        <a href="https://github.com/tibo47-161" class="button github" target="_blank">GitHub</a>
+        <a href="https://www.instagram.com/Tibo47_" class="button instagram" target="_blank">Instagram</a>
+        <a href="https://wa.me/+4917646780038" class="button whatsapp" target="_blank">WhatsApp</a>
+    </div>
+<hr>
+<h3 style="text-align:center; color:aqua">Technische Fertigkeiten</h3>
+<h6 style="color:aqua">-DATENBANKENTWICKLUNG -UND -MANAGEMENT (MARIADB) <p></p>
+    -OOP IN PYTHON (INKL. TKINTER FÜR GUI-ENTWICKLUNG) <p></p>
+    -GRUNDKENNTNISSE IN DJANGO <p></p>
+    -FEHLERBEHEBUNG UND DEBUGGING VON HARDWARE U. SOFTWARE</h6>
+</body>
+<style>
+    img{
+        float:left;
+        padding: 10px;
+    }
+    h6{
+        font-size:15px;
+    }
+
+
+</style>
+</html>
