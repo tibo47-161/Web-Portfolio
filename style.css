@@ -38,3 +38,6 @@ img:hover{
     transition: transform 0.1s ;
     pointer-events: none;
 }
+a{
+    cursor: none;
+}
