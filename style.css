@@ -1,0 +1,40 @@
+body, html {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: auto;
+    cursor: none;
+}
+.video-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    z-index: -1;
+}
+.content {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    color: white;
+    padding-bottom: 20px;
+}
+img {
+    width: 40px;
+    /* Größe des Icons anpassen */
+    height: 40px;
+    /* Größe des Icons anpassen */
+    margin: 10px;
+    vertical-align: middle;
+}
+img:hover{
+    transform: scale(1.2);
+}
+.bitmoji {
+    position: absolute;
+    width: 100px;
+    transition: transform 0.1s ;
+    pointer-events: none;
+}

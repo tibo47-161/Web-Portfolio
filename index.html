@@ -6,41 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tobi´s Portfolio</title>
     <title>Tobi´s Portfolio</title>
-    <style>
-        body, html {
-            height: 100%;
-            margin: 0;
-            padding: 0;
-            overflow: auto;
-        }
-        .video-background {
-            position: fixed;
-            top: 0;
-            left: 0;
-            height: 100%;
-            width: 100%;
-            object-fit: cover;
-            z-index: -1;
-        }
-        .content {
-            position: relative;
-            z-index: 1;
-            text-align: center;
-            color: white;
-            padding-bottom: 20px;
-        }
-        img {
-            width: 40px;
-            /* Größe des Icons anpassen */
-            height: 40px;
-            /* Größe des Icons anpassen */
-            margin: 10px;
-            vertical-align: middle;
-        }
-        img:hover{
-            transform: scale(1.2);
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
+
 </head>
 <body>
     <video class="video-background" autoplay muted loop>
@@ -113,6 +80,27 @@
         <p style="color: aliceblue;">-OOP IN PYTHON (INKL. TKINTER FÜR GUI-ENTWICKLUNG)
         <p style="color: aliceblue;">-GRUNDKENNTNISSE IN DJANGO</p>
         <p style="color: aliceblue;">-FEHLERBEHEBUNG UND DEBUGGING VON HARDWARE U. SOFTWARE</p>
+
+
+        <img src="./bitmoji.png" alt="bitmojis" class="bitmoji" id="bitmoji">
+        <script>
+            const bitmoj = document.getElementById('bitmoji');
+
+            document.addEventListener('mousemove',(e) => {
+                const x = e.clientX - (bitmoj.offsetWidth / 2);
+                const y = e.clientY - (bitmoj.offsetHeight /2);
+
+                const angle = Math.atan2(e.clientY - window.innerHeight /2, e.clientX - window.innerWidth /2) * 180/ Math.PI;
+
+                bitmoj.style.left = x + 'px';
+                bitmoj.style.top = y + 'px';
+                bitmoj.style.transform = `translate(${mouseX}px, ${mouseY}px)`;
+            });
+
+
+        </script>
+
+    
     
 </body>
     </html>
