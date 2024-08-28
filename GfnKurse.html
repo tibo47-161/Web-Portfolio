@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tobi´s Portfolio</title>
+    <title>Tobi´s Portfolio</title>
+    <link rel="stylesheet" href="KurseStyles.css">
+</head>
+
+<body>
+    <h1 style="text-align:center; color: Aqua">GFN-Lernfelder</h1>
+    <h3 style="text-align:center; color: whitesmoke">Lernfelder die wir bisher gelernt haben und ihre Inhalte</h3>
+    <hr>
+    <h2 style="text-align:center; color:aqua">Lernfeld</h2>
+    <video class="video-background" autoplay muted loop>
+        <source src="./it-vid.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <table>
+        <thead>
+            <tr>
+                <th style="color: aqua;">Kurs</th>
+                <th style="color: aqua;">Bestanden?</th>
+                <th style="color: aqua;">Inhalt</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td style="color: aliceblue;">LF01V2 Das Unternehmen und die eigene Rolle im Betrieb
+                    05.02.2024-09.02.2024</td>
+                <td>Ja</td>
+                <td>Gesetzte, Rechte und Normen am und um dem IT-Arbeitsplatz</td>
+            </tr>
+            <tr>
+                <td style="color: aliceblue;">LF02V2 Arbeitsplatz nach Kundenwunsch ausstatten 26.02.2024-15.03.2024
+                </td>
+                <td>Ja</td>
+                <td>Zelle 2-3</td>
+            </tr>
+            <tr>
+                <td style="color: aliceblue;">LFLF03 Clients in Netzwerk einbinden 18.03.2024-19.04.2024</td>
+                <td>Ja</td>
+                <td>Zelle 3-3</td>
+            </tr>
+            <tr>
+                <td style="color: aliceblue;">LF04V2 Schutzbedarfsanalyse im eigenen Arbeitsbereich durchführen
+                    22.04.2024-26.04.2024</td>
+                <td>Ja</td>
+                <td>Zelle 4-3</td>
+            </tr>
+            <tr>
+                <td style="color: aliceblue;">LF05V2 Software zur Verwaltung von Daten anpassen 29.04.2024-17.05.2024
+                </td>
+                <td>Ja</td>
+                <td>Zelle 5-3</td>
+            </tr>
+            <tr>
+                <td style="color: aliceblue;">LF06V2 Serviceanfragen bearbeiten 19.08.2024-23.08.2024</td>
+                <td>Ja</td>
+                <td>Zelle 6-3</td>
+            </tr>
+            <tr>
+                <td style="color: aliceblue;">LF07V2 Cyber-physische Systeme ergänzen 27.05.2024-07.06.2024</td>
+                <td>Ja</td>
+                <td>Zelle 7-3</td>
+            </tr>
+            <tr>
+                <td style="color: aliceblue;">LFLF08V2 Daten systemübergreifend bereitstellen 10.06.2024-28.06.2024</td>
+                <td>Ja</td>
+                <td>Zelle 8-3</td>
+            </tr>
+            <tr>
+                <td style="color: aliceblue;">LF09V2 Netzwerke und Dienste bereitstellen 01.07.2024-19.07.2024</td>
+                <td>Ja</td>
+                <td>Zelle 9-3</td>
+            </tr>
+            <tr>
+                <td style="color: aliceblue;">LF10aV2 Benutzerschnittstellen gestalten und entwickeln
+                    26.08.2024-13.09.2024</td>
+                <td>Ja</td>
+                <td>Zelle 10-3</td>
+            </tr>
+            <tr>
+                <td style="color: aliceblue;">LF-F1 Fachliches Englisch 05.08.2024-16.08.2024</td>
+                <td>Ja</td>
+                <td>Zelle 10-3</td>
+            </tr>
+            <tr>
+                <td style="color: aliceblue;">LF-F2 Bewerbungstraining und Praktikumsvorbereitung 21.05.2024-24.05.2024
+                </td>
+                <td>Ja</td>
+                <td>Zelle 10-3</td>
+            </tr>
+            <tr>
+                <td style="color: aliceblue;">LF-F3 Office Management 29.01.2024-02.02.2024</td>
+                <td>Ja</td>
+                <td>Zelle 10-3</td>
+            </tr>
+            <tr>
+                <td style="color: aliceblue;">LF-F4 Grundlagen Projektmanagement 12.02.2024-23.02.2024</td>
+                <td>Ja</td>
+                <td>Zelle 10-3</td>
+            </tr>
+        </tbody>
+    </table>
+    <img src="./bitmoji.png" alt="bitmojis" class="bitmoji" id="bitmoji">
+    <script>  
+
+            const bitmoj = document.getElementById('bitmoji');
+
+            document.addEventListener('mousemove',(e) => {
+            const x = e.clientX - (bitmoj.offsetWidth / 2);
+            const y = e.clientY - (bitmoj.offsetHeight /2);
+
+            const angle = Math.atan2(e.clientY - window.innerHeight /2, e.clientX - window.innerWidth /2) * 180/ Math.PI;
+
+            bitmoj.style.left = x + 'px';
+            bitmoj.style.top = y + 'px';
+            bitmoj.style.transform = `translate(${mouseX}px, ${mouseY}px)`;
+            });
+    </script>
+</body>

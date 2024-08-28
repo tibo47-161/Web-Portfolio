@@ -1,0 +1,38 @@
+body, html {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: auto;
+    cursor: none;
+}
+
+.video-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    z-index: -1;
+}
+table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    th, td {
+        border: 1px solid black;
+        padding: 8px;
+        text-align: left;
+    }
+
+    th {
+        background-color: #f2f2f2;
+    }
+
+    .bitmoji {
+        position: absolute;
+        width: 100px;
+        transition: transform 0.1s ;
+        pointer-events: none;
+    }
