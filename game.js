@@ -9,7 +9,7 @@ function jump(event) {
             player.classList.add('jump');
             setTimeout(function() {
                 player.classList.remove('jump');
-            }, 800);
+            }, 1000);
         }
     }
 }
@@ -18,7 +18,7 @@ let isAlive = setInterval(function() {
     let playerTop = parseInt(window.getComputedStyle(player).getPropertyValue('top'));
     let obstacleLeft = parseInt(window.getComputedStyle(obstacle).getPropertyValue('left'));
 
-    if (obstacleLeft < 100 && obstacleLeft > 50 && playerTop >= 150) {
+    if (obstacleLeft < 120 && obstacleLeft > 50 && playerTop >= 100) {
         alert('Game Over!');
         location.reload();
     }
