@@ -34,27 +34,16 @@ h1 {
     background-repeat: no-repeat;
 }
 
-#obstacle {
+.obstacle {
     position: absolute;
     bottom: 0;
-    right: 0;
     width: 50px;
     height: 60px;
     background-color: black;
-    animation: moveObstacle 2s linear infinite;
-}
-
-@keyframes moveObstacle {
-    0% {
-        right: -50px;
-    }
-    100% {
-        right: 850px;
-    }
 }
 
 .jump {
-    animation: jump 0.8s ease-out ;
+    animation: jump 0.8s ease-out;
 }
 
 @keyframes jump {
@@ -68,6 +57,7 @@ h1 {
         bottom: 0;
     }
 }
+
 button {
     padding: 10px 20px;
     background-color: aqua;
@@ -78,4 +68,3 @@ button {
     font-size: 16px;
     transition: background-color 0.3s ease;
 }
-
