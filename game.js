@@ -5,7 +5,9 @@ let obstacle = document.getElementById('obstacle');
 let score = 0;
 let jumpCount = 0;
 let username = prompt("Enter your name:");
-let isAlive;
+
+
+
 
 
 function jump(event) {
