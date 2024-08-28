@@ -5,7 +5,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tobi´s Portfolio</title>
+    <title>Tobi´s Portfolio</title>
     <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+        .video-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+        .content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            color: white;
+        }
         img {
             width: 40px;
             /* Größe des Icons anpassen */
@@ -14,25 +36,14 @@
             margin: 10px;
             vertical-align: middle;
         }
-
-        .button-container {
-            text-align: center;
-            margin-top: 10px;
-        }
-        
-        h6 {
-            font-size: 15px;
-        }
-
-        #encrypted {
-            background-size: cover;
-        }
     </style>
 </head>
+<body>
+    <video class="video-background" autoplay muted loop>
+        <source src="./198771-908874601_tiny.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
 
-<body
-    background="https://img.reintech.io/variants/o2douig2cv91edd7suk5nqheflzd/e7b4ce09c703210ab8f75b017c7eaf0951c5a95b737ee8120602845c1c1d944b"
-    id="encrypted">
     <h1 style="text-align:center;color: whitesmoke">Willkommen! Witamy!</h1>
     <h2 style="text-align:center;color: aqua;">Zu Tobi´s Web-Portfolio</h2>
     <hr>
