@@ -4,47 +4,46 @@ let player = document.getElementById('player');
 let gameContainer = document.getElementById('game-container');
 let obstacles = [];
 let score = 0;
+let successfulJumps = 0;
 let username = prompt("Enter your name:");
 let isAlive;
+let gameInterval;
 
 function startGame() {
     score = 0;
+    successfulJumps = 0;
     obstacles = [];
-    gameContainer.innerHTML = ''; // Fehlerbehebung: 'innerHtml' zu 'innerHTML' geändert
+    document.getElementById('game-container').innerHTML = '';
     gameContainer.appendChild(player);
-    
+    document.getElementById('jump-counter').innerText = `Erfolgreiche Sprünge: 0`;
+
     isAlive = setInterval(gameLoop, 10);
     generateObstacle();
 }
 
 function gameLoop() {
     let playerTop = parseInt(window.getComputedStyle(player).getPropertyValue('top'));
-
-    obstacles.forEach(function (obstacle, index) {
+    
+    obstacles.forEach(function (obstacle) {
         let obstacleLeft = parseInt(window.getComputedStyle(obstacle).getPropertyValue('left'));
 
-        // Kollisionserkennung
-        if (obstacleLeft < 120 && obstacleLeft > 50 && playerTop >= 80) {
+        if (obstacleLeft < 120 && obstacleLeft > 50 && playerTop >= 70) {
             clearInterval(isAlive);
-            alert('Game Over, du Looser!');
+            alert('Game Over!');
             saveScore(score);
 
             if (confirm("Willst du es nochmal versuchen?")) {
                 startGame();
             }
+        } else if (obstacleLeft < 50 && !obstacle.counted) {
+            successfulJumps++;
+            obstacle.counted = true;
+            document.getElementById('jump-counter').innerText = `Erfolgreiche Sprünge: ${successfulJumps}`;
         } else {
-            obstacle.style.left = (obstacleLeft - 6) + 'px';
-
-            // Entfernen von Hindernissen, die außerhalb des Bildschirms sind
-            if (obstacleLeft < -50) {
-                obstacle.remove();
-                obstacles.splice(index, 1);
-                score++;
-            }
+            obstacle.style.left = (obstacleLeft - 4) + 'px';
         }
     });
 
-    // Neue Hindernisse generieren
     if (Math.random() < 0.01) {
         generateObstacle();
     }
@@ -53,8 +52,8 @@ function gameLoop() {
 function generateObstacle() {
     let obstacle = document.createElement('div');
     obstacle.className = 'obstacle';
-    obstacle.style.left = '800px'; // Hindernis außerhalb des rechten Randes positionieren
-    gameContainer.appendChild(obstacle);
+    obstacle.style.left = '100%';
+    document.getElementById('game-container').appendChild(obstacle);
     obstacles.push(obstacle);
 }
 
@@ -62,9 +61,9 @@ function jump(event) {
     if (event.code === 'Space') {
         if (!player.classList.contains('jump')) {
             player.classList.add('jump');
-            setTimeout(function () {
+            setTimeout(function() {
                 player.classList.remove('jump');
-            }, 800);
+            }, 300);
         }
     }
 }
