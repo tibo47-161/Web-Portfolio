@@ -27,7 +27,7 @@ function gameLoop() {
     obstacles.forEach(function (obstacle) {
         let obstacleLeft = parseInt(window.getComputedStyle(obstacle).getPropertyValue('left'));
 
-        if (obstacleLeft < 120 && obstacleLeft > 50 && playerTop >= 70) {
+        if (obstacleLeft <  80 && obstacleLeft > 50 && playerTop + 115 >= 50) {
             clearInterval(isAlive);
             alert('Game Over!');
             saveScore(score);
@@ -44,7 +44,7 @@ function gameLoop() {
         }
     });
 
-    if (Math.random() < 0.1) {
+    if (Math.random() < 0.008) {
         generateObstacle();
     }
 }
