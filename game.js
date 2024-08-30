@@ -22,12 +22,18 @@ function startGame() {
 }
 
 function gameLoop() {
-    let playerTop = parseInt(window.getComputedStyle(player).getPropertyValue('top'));
-    
+    let playerBottom = parseInt(window.getComputedStyle(player).getPropertyValue('height')) + parseInt(window.getComputedStyle(player).getPropertyValue('bottom'));
+    let playerLeft = parseInt(window.getComputedStyle(player).getPropertyValue('left'));
+    let playerWidth = parseInt(window.getComputedStyle(player).getPropertyValue('width'));
+
     obstacles.forEach(function (obstacle) {
         let obstacleLeft = parseInt(window.getComputedStyle(obstacle).getPropertyValue('left'));
+        let obstacleWidth = parseInt(window.getComputedStyle(obstacle).getPropertyValue('width'));
+        let obstacleTop = parseInt(window.getComputedStyle(obstacle).getPropertyValue('height')) + parseInt(window.getComputedStyle(obstacle).getPropertyValue('bottom'));
 
-        if (obstacleLeft <  80 && obstacleLeft > 50 && playerTop + 115 >= 50) {
+        if (obstacleLeft < playerLeft + playerWidth &&
+            obstacleLeft + obstacleWidth > playerLeft &&
+            playerBottom >= obstacleTop) {
             clearInterval(isAlive);
             alert('Game Over!');
             saveScore(score);
@@ -53,6 +59,7 @@ function generateObstacle() {
     let obstacle = document.createElement('div');
     obstacle.className = 'obstacle';
     obstacle.style.left = '100%';
+    obstacle.style.height = (Math.random() * 50) + 20 + 'px'; // random height between 20px and 70px
     document.getElementById('game-container').appendChild(obstacle);
     obstacles.push(obstacle);
 }

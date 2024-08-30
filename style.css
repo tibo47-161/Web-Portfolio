@@ -23,9 +23,7 @@ body, html {
 }
 img {
     width: 40px;
-    /* Größe des Icons anpassen */
     height: 40px;
-    /* Größe des Icons anpassen */
     margin: 10px;
     vertical-align: middle;
 }
