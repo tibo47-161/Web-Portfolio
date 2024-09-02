@@ -117,4 +117,5 @@ function updateLeaderboardUI(leaderboard) {
 }
 
 
+
 startGame();
