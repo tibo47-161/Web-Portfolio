@@ -9,8 +9,9 @@ const wss = new WebSocket.Server({ server });
 const pool = mariadb.createPool({
     host: 'localhost',
     user: 'root',
-    password: 'your_password',
-    database: 'game_scores'
+    password: 'Tonnenkraft96',
+    database: 'game_scores',
+    connectionLimit: 5  
 });
 
 wss.on('connection', (ws) => {
@@ -19,13 +20,17 @@ wss.on('connection', (ws) => {
     ws.on('message', async (message) => {
         const data = JSON.parse(message);
         if (data.type === 'new_score') {
-            await saveScore(data.username, data.score);
-            const topScores = await getTopScores();
-            wss.clients.forEach((client) => {
-                if (client.readyState === WebSocket.OPEN) {
-                    client.send(JSON.stringify({ type: 'update_scores', scores: topScores }));
-                }
-            });
+            try {
+                await saveScore(data.username, data.score);
+                const topScores = await getTopScores();
+                wss.clients.forEach((client) => {
+                    if (client.readyState === WebSocket.OPEN) {
+                        client.send(JSON.stringify({ type: 'update_scores', scores: topScores }));
+                    }
+                });
+            } catch (error) {
+                console.error('Error handling message:', error);
+            }
         }
     });
 });

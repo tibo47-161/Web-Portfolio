@@ -31,10 +31,19 @@ function gameLoop() {
         let obstacleWidth = parseInt(window.getComputedStyle(obstacle).getPropertyValue('width'));
         let obstacleTop = parseInt(window.getComputedStyle(obstacle).getPropertyValue('height')) + parseInt(window.getComputedStyle(obstacle).getPropertyValue('bottom'));
 
-        if (obstacleLeft < playerLeft + playerWidth &&
-            obstacleLeft + obstacleWidth > playerLeft &&
-            playerBottom >= obstacleTop) {
+        console.log("Player Left:", playerLeft);
+        console.log("Player Bottom:", playerBottom);
+        console.log("Player Width:", playerWidth);
+
+        console.log("Obstacle Left:", obstacleLeft);
+        console.log("Obstacle Top:", obstacleTop);
+        console.log("Obstacle Width:", obstacleWidth);
+
+        if (obstacleLeft < playerLeft + playerWidth - 38 &&
+            obstacleLeft + obstacleWidth > playerLeft + 38 &&
+            playerBottom >= obstacleTop + 38) {
             clearInterval(isAlive);
+            console.log('Collision detected!');
             alert('Game Over!');
             saveScore(score);
 
@@ -59,9 +68,10 @@ function generateObstacle() {
     let obstacle = document.createElement('div');
     obstacle.className = 'obstacle';
     obstacle.style.left = '100%';
-    obstacle.style.height = (Math.random() * 50) + 20 + 'px'; // random height between 20px and 70px
+    obstacle.style.height = (Math.random() * 50) + 20 + 'px'; 
     document.getElementById('game-container').appendChild(obstacle);
     obstacles.push(obstacle);
+    console.log();
 }
 
 function jump(event) {
@@ -75,8 +85,36 @@ function jump(event) {
     }
 }
 
-function saveScore(finalScore) {
-    console.log(`Score for ${username}: ${finalScore}`);
+function saveScore(username, score) {
+    const validScore = score !== undefined ? score : 0;
+    const ws = new WebSocket('ws://localhost:8080');
+
+    ws.onopen = () => {
+        ws.send(JSON.stringify({
+            type: 'new_score',  
+            username: username,  // Verwende den Benutzernamen
+            score: score !== undefined ? score : 0
+        }));
+    };
+
+    ws.onmessage = (event) => {
+        const data = JSON.parse(event.data);
+        if (data.type === 'update_scores') { // Ändere dies zu 'update_scores'
+            updateLeaderboardUI(data.scores);
+        }
+    };
 }
+
+function updateLeaderboardUI(leaderboard) {
+    const leaderboardContainer = document.getElementById('leaderboard');
+    leaderboardContainer.innerHTML = ''; 
+
+    leaderboard.forEach((entry, index) => {
+        const entryElement = document.createElement('div');
+        entryElement.textContent = `${index + 1}. ${entry.username}: ${entry.score}`;
+        leaderboardContainer.appendChild(entryElement);
+    });
+}
+
 
 startGame();
