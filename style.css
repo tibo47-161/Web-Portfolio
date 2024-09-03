@@ -39,3 +39,28 @@ img:hover{
 a{
     cursor: none;
 }
+.collapsible-container {
+    margin: 10px;
+}
+.collapsible {
+    background-color: aqua;
+    color: white;
+    border: none;
+    padding: 10px;
+    text-align: center;
+    width: 100%;
+    font-size: 18px;
+    border-radius: 5px;
+    outline: none;
+    transition: background-color 0.3s;
+}
+.collapsible:hover {
+    background-color: lightseagreen;
+}
+.content {
+    padding: 10px;
+    max-height: 0; 
+    overflow: hidden;
+    background-color: #f1f1f1;
+    transition: max-height 0.3s ease-out; 
+}

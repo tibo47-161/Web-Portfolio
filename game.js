@@ -25,6 +25,9 @@ function startGame() {
 }
 
 function gameLoop() {
+    if (isSuccessfulJump()) {
+        successfulJumps++;
+    }
     let player_y = parseInt(window.getComputedStyle(player).getPropertyValue('bottom'));
     let player_x = parseInt(window.getComputedStyle(player).getPropertyValue('left'));
     let playerWidth = parseInt(window.getComputedStyle(player).getPropertyValue('width'));
@@ -33,7 +36,7 @@ function gameLoop() {
     obstacles.forEach(function (obstacle) {
         let obstacle_x = parseInt(window.getComputedStyle(obstacle).getPropertyValue('left'));
         let obstacleWidth = parseInt(window.getComputedStyle(obstacle).getPropertyValue('width'));
-        let obstacle_y = parseInt(window.getComputedStyle(obstacle).getPropertyValue('bottom')); // Ändere 'top' zu 'bottom'
+        let obstacle_y = parseInt(window.getComputedStyle(obstacle).getPropertyValue('bottom')); 
         let obstacleHeight = parseInt(window.getComputedStyle(obstacle).getPropertyValue('height'));
 
         
