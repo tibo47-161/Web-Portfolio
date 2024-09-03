@@ -8,6 +8,9 @@ let successfulJumps = 0;
 let username = prompt("Enter your name:");
 let isAlive;
 let gameInterval;
+let gravity = 2;
+let fallspeed = 0;
+let isJumping = false;
 
 function startGame() {
     score = 0;
@@ -25,27 +28,26 @@ function gameLoop() {
     let player_y = parseInt(window.getComputedStyle(player).getPropertyValue('bottom'));
     let player_x = parseInt(window.getComputedStyle(player).getPropertyValue('left'));
     let playerWidth = parseInt(window.getComputedStyle(player).getPropertyValue('width'));
-    playerWidth = playerWidth / 2
+    let playerHeight = parseInt(window.getComputedStyle(player).getPropertyValue('height'));
 
     obstacles.forEach(function (obstacle) {
         let obstacle_x = parseInt(window.getComputedStyle(obstacle).getPropertyValue('left'));
         let obstacleWidth = parseInt(window.getComputedStyle(obstacle).getPropertyValue('width'));
-        let obstacle_y = parseInt(window.getComputedStyle(obstacle).getPropertyValue('top'));
+        let obstacle_y = parseInt(window.getComputedStyle(obstacle).getPropertyValue('bottom')); // Ändere 'top' zu 'bottom'
+        let obstacleHeight = parseInt(window.getComputedStyle(obstacle).getPropertyValue('height'));
 
-        console.log("Player x:", player_x);
-        console.log("player bottom-y:", player_y);
-        console.log("Player Width:", playerWidth);
-
-        console.log("Obstacle x:", obstacle_x);
-        console.log("Obstacle Top-y:", obstacle_y);
-        console.log("Obstacle Width:", obstacleWidth);
-
-        if ((obstacle_x < (player_x + playerWidth)) && (obstacle_y - 212 > player_y)) {
+        
+        if (
+            player_x < obstacle_x + obstacleWidth && 
+            player_x + playerWidth > obstacle_x &&
+            player_y < obstacle_y + obstacleHeight &&
+            player_y + playerHeight > obstacle_y
+        ) {
             clearInterval(isAlive);
-            console.log("Obstacle x:", obstacle_x,"Player x:", player_x,"Obstacle Top-y:", obstacle_y,"player bottom-y:", player_y)
+            console.log("Obstacle x:", obstacle_x,"Player x:", player_x,"Obstacle Bottom-y:", obstacle_y,"player bottom-y:", player_y);
             console.log('Collision detected!');
             alert('Game Over!');
-            saveScore(score);
+            saveScore(username, score);
 
             if (confirm("Willst du es nochmal versuchen?")) {
                 startGame();
@@ -62,13 +64,23 @@ function gameLoop() {
     if (Math.random() < 0.008) {
         generateObstacle();
     }
+
+    if (!isJumping) {
+        fallspeed += gravity;
+        player_y -= fallspeed;
+
+        if (player_y <= 0) {
+            player_y = 0;
+            fallspeed = 0;
+        }
+        player.style.bottom = player_y + 'px';
+    }
 }
 
 function generateObstacle() {
     let obstacle = document.createElement('div');
     obstacle.className = 'obstacle';
     obstacle.style.left = '100%';
-    // obstacle.style.height = (Math.random() * 50) + 20 + 'px';
     obstacle.style.height = 70 + 'px';
     document.getElementById('game-container').appendChild(obstacle);
     obstacles.push(obstacle);
@@ -76,13 +88,13 @@ function generateObstacle() {
 }
 
 function jump(event) {
-    if (event.code === 'Space') {
-        if (!player.classList.contains('jump')) {
-            player.classList.add('jump');
-            setTimeout(function() {
-                player.classList.remove('jump');
-            }, 300);
-        }
+    if (event.code === 'Space' && !isJumping) {
+        isJumping = true;
+        fallspeed = -20;  // Startet den Sprung nach oben
+
+        setTimeout(function() {
+            isJumping = false;  // Erlaubt das Fallen nach dem Sprung
+        }, 300);
     }
 }
 
@@ -93,14 +105,14 @@ function saveScore(username, score) {
     ws.onopen = () => {
         ws.send(JSON.stringify({
             type: 'new_score',  
-            username: username,  // Verwende den Benutzernamen
+            username: username,  
             score: score !== undefined ? score : 0
         }));
     };
 
     ws.onmessage = (event) => {
         const data = JSON.parse(event.data);
-        if (data.type === 'update_scores') { // Ändere dies zu 'update_scores'
+        if (data.type === 'update_scores') { 
             updateLeaderboardUI(data.scores);
         }
     };
@@ -116,7 +128,5 @@ function updateLeaderboardUI(leaderboard) {
         leaderboardContainer.appendChild(entryElement);
     });
 }
-
-
 
 startGame();
