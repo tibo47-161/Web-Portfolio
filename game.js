@@ -22,27 +22,27 @@ function startGame() {
 }
 
 function gameLoop() {
-    let playerBottom = parseInt(window.getComputedStyle(player).getPropertyValue('height')) + parseInt(window.getComputedStyle(player).getPropertyValue('bottom'));
-    let playerLeft = parseInt(window.getComputedStyle(player).getPropertyValue('left'));
+    let player_y = parseInt(window.getComputedStyle(player).getPropertyValue('bottom'));
+    let player_x = parseInt(window.getComputedStyle(player).getPropertyValue('left'));
     let playerWidth = parseInt(window.getComputedStyle(player).getPropertyValue('width'));
+    playerWidth = playerWidth / 2
 
     obstacles.forEach(function (obstacle) {
-        let obstacleLeft = parseInt(window.getComputedStyle(obstacle).getPropertyValue('left'));
+        let obstacle_x = parseInt(window.getComputedStyle(obstacle).getPropertyValue('left'));
         let obstacleWidth = parseInt(window.getComputedStyle(obstacle).getPropertyValue('width'));
-        let obstacleTop = parseInt(window.getComputedStyle(obstacle).getPropertyValue('height')) + parseInt(window.getComputedStyle(obstacle).getPropertyValue('bottom'));
+        let obstacle_y = parseInt(window.getComputedStyle(obstacle).getPropertyValue('top'));
 
-        console.log("Player Left:", playerLeft);
-        console.log("Player Bottom:", playerBottom);
+        console.log("Player x:", player_x);
+        console.log("player bottom-y:", player_y);
         console.log("Player Width:", playerWidth);
 
-        console.log("Obstacle Left:", obstacleLeft);
-        console.log("Obstacle Top:", obstacleTop);
+        console.log("Obstacle x:", obstacle_x);
+        console.log("Obstacle Top-y:", obstacle_y);
         console.log("Obstacle Width:", obstacleWidth);
 
-        if (obstacleLeft < playerLeft + playerWidth - 38 &&
-            obstacleLeft + obstacleWidth > playerLeft + 38 &&
-            playerBottom >= obstacleTop + 38) {
+        if ((obstacle_x < (player_x + playerWidth)) && (obstacle_y - 212 > player_y)) {
             clearInterval(isAlive);
+            console.log("Obstacle x:", obstacle_x,"Player x:", player_x,"Obstacle Top-y:", obstacle_y,"player bottom-y:", player_y)
             console.log('Collision detected!');
             alert('Game Over!');
             saveScore(score);
@@ -50,12 +50,12 @@ function gameLoop() {
             if (confirm("Willst du es nochmal versuchen?")) {
                 startGame();
             }
-        } else if (obstacleLeft < 50 && !obstacle.counted) {
+        } else if (obstacle_x < 50 && !obstacle.counted) {
             successfulJumps++;
             obstacle.counted = true;
             document.getElementById('jump-counter').innerText = `Erfolgreiche Sprünge: ${successfulJumps}`;
         } else {
-            obstacle.style.left = (obstacleLeft - 4) + 'px';
+            obstacle.style.left = (obstacle_x - 4) + 'px';
         }
     });
 
@@ -68,7 +68,8 @@ function generateObstacle() {
     let obstacle = document.createElement('div');
     obstacle.className = 'obstacle';
     obstacle.style.left = '100%';
-    obstacle.style.height = (Math.random() * 50) + 20 + 'px'; 
+    // obstacle.style.height = (Math.random() * 50) + 20 + 'px';
+    obstacle.style.height = 70 + 'px';
     document.getElementById('game-container').appendChild(obstacle);
     obstacles.push(obstacle);
     console.log();

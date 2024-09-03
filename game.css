@@ -37,7 +37,6 @@ h1 {
 
 #player {
     position: absolute;
-    bottom: 0;
     left: 50px;
     width: 70px;
     height: 100px;
@@ -45,6 +44,7 @@ h1 {
     background-size: cover;
     background-repeat: no-repeat;
     border: solid 2px red;
+    bottom: 0;
 }
 
 #jump-counter {
@@ -55,7 +55,7 @@ h1 {
 }
 
 .obstacle {
-    position: absolute;
+    position: absolute; 
     bottom: 0;
     width: 30px;
     height: 50px;
