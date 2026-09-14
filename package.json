@@ -1,4 +1,5 @@
 {
+  "version": "0.1.0",
   "dependencies": {
     "express": "^4.19.2",
     "mariadb": "^3.3.1",
